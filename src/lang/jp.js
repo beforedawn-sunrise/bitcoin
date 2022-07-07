@@ -559,6 +559,7 @@ export default {
         "hideSm": "小口資産の非表示",
         "assets": "資産",
         "taccount": "取引口座",
+        "question":"顧客サービス",
         "laccount": "法幣勘定",
         "totalassets": "総資産換算",
         "letransaction": "秒契約アカウント",

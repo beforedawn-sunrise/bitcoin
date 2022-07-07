@@ -9,7 +9,8 @@
       </mu-ripple>
     </div>
 
-    <div @click="$router.push('/customerService')" class="flex-column" :class="active==='customerService'?'active':''"
+  <a href="https://www.google.com.tw/">
+    <div class="flex-column" :class="active==='customerService'?'active':''"
          justify-content="center">
       <mu-ripple>
         <div>
@@ -18,6 +19,7 @@
         </div>
       </mu-ripple>
     </div>
+  </a>  
     <div @click="$router.push('/exchange')" class="flex-column" :class="active==='exchange'?'active':''"
          justify-content="center">
       <mu-ripple>

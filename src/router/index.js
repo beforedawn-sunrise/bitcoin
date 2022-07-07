@@ -21,7 +21,8 @@ import IEPN from "@/views/IEPN";
 import BuyUSDT from "@/views/BuyUSDT";
 import Detail from "@/views/Detail";
 import customerService from "@/views/customer_service";
-
+import icoStart from "@/views/ico_start";
+import whitePaper from "@/views/whitePaper";
 Vue.use(VueRouter)
 
 const routes = [
@@ -195,6 +196,22 @@ const routes = [
         component: customerService,
         meta: {
             title: 'customerService'
+        }
+    },
+    {
+        path: '/icoStart',
+        name: 'icoStart',
+        component: icoStart,
+        meta: {
+            title: 'icoStart'
+        }
+    },
+    {
+        path: '/whitePaper',
+        name: 'whitePaper',
+        component: whitePaper,
+        meta: {
+            title: 'whitePapert'
         }
     }
 ]

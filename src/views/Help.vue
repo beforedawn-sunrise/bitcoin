@@ -20,6 +20,41 @@
             </svg>
             <p class="subtitle">{{ $t('tpc.nodata') }}</p>
           </div>
+          
+                    <mu-list-item @click="ico_start" avatar button :ripple="true">
+            <mu-list-item-action>
+              <mu-avatar :color="4%2==0?'primary':'amber500'">
+                <mu-icon value=":icon-gonggao5"></mu-icon>
+              </mu-avatar>
+            </mu-list-item-action>
+            <mu-list-item-content style="padding: 0 10px;">
+              <mu-list-item-title>SPAC ICO Start Project</mu-list-item-title>
+              <mu-list-item-sub-title>2022-07-06</mu-list-item-sub-title>
+            </mu-list-item-content>
+            <mu-list-item-action>
+              <mu-button icon>
+                <mu-icon value=":icon-xiangqing"></mu-icon>
+              </mu-button>
+            </mu-list-item-action>
+          </mu-list-item>
+
+           <mu-list-item @click="whitePaper" avatar button :ripple="true">
+            <mu-list-item-action>
+              <mu-avatar :color="4%2==0?'primary':'amber500'">
+                <mu-icon value=":icon-gonggao5"></mu-icon>
+              </mu-avatar>
+            </mu-list-item-action>
+            <mu-list-item-content style="padding: 0 10px;">
+              <mu-list-item-title>SPAC White Paper</mu-list-item-title>
+              <mu-list-item-sub-title>2022-07-06</mu-list-item-sub-title>
+            </mu-list-item-content>
+            <mu-list-item-action>
+              <mu-button icon>
+                <mu-icon value=":icon-xiangqing"></mu-icon>
+              </mu-button>
+            </mu-list-item-action>
+          </mu-list-item>
+
           <mu-list-item @click="showDetail(item.id)" v-for="(item,index) in notices" avatar button :ripple="true">
             <mu-list-item-action>
               <mu-avatar :color="index%2==0?'primary':'amber500'">
@@ -28,7 +63,7 @@
             </mu-list-item-action>
             <mu-list-item-content style="padding: 0 10px;">
               <mu-list-item-title>{{ item.title }}</mu-list-item-title>
-              <mu-list-item-sub-title>{{ item.create_time }}</mu-list-item-sub-title>
+              <mu-list-item-sub-title>2022-07-06</mu-list-item-sub-title>
             </mu-list-item-content>
             <mu-list-item-action>
               <mu-button icon>
@@ -36,6 +71,8 @@
               </mu-button>
             </mu-list-item-action>
           </mu-list-item>
+
+
         </mu-list>
       </mu-container>
     </div>
@@ -66,9 +103,19 @@ export default {
   mounted() {
     this.loadNews(21);
     this.loadNews(19);
-    this.loadNews(3);
+    // this.loadNews(3);
+    this.loadNews(11);
   },
   methods: {
+    ico_start(){
+        const vm = this;
+        vm.$router.push('/icoStart');
+    },
+    whitePaper(){
+        const vm = this;
+        vm.$router.push('/whitePaper');
+    },
+
     loadNews(cid) {
       let loading = this.$loading();
       let that = this;
@@ -77,6 +124,7 @@ export default {
 
           loading && loading.close();
           let pics = [];
+          console.log(res.data.message);
           for (let i = res.data.message.list.length - 1; i >= 0; i--) {
             let item = res.data.message.list[i];
             pics.push({

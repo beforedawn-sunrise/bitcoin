@@ -6,6 +6,7 @@ import en from './en'
 import kr from './kr'
 import jp from './jp'
 import hk from './hk'
+import tr from './tr'
 import spa from './spa'
 
 let locale = window.localStorage.getItem('locale') || '';
@@ -21,6 +22,7 @@ export default new VueI18n({
     kr:kr,
     jp:jp,
     hk:hk,
-    spa:spa
+    spa:spa,
+    tr:tr
   }
 })

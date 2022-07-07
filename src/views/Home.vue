@@ -25,6 +25,7 @@
               <use v-if="lang=='kr'" xlink:href="#icon-hanyu1"></use>
               <use v-if="lang=='jp'" xlink:href="#icon--riyu"></use>
               <use v-if="lang=='en'" xlink:href="#icon-yingyu1"></use>
+              <use v-if="lang=='tr'" xlink:href="#icon--turkey"></use>
             </svg>
           </mu-button>
           <mu-popover class="popforlang" :open.sync="openLanguage" :trigger="trigger">
@@ -39,6 +40,7 @@
                       <use v-if="item.lang=='hk'" xlink:href="#icon-hong_kong__easyiconnet"></use>
                       <use v-if="item.lang=='kr'" xlink:href="#icon-hanyu1"></use>
                       <use v-if="item.lang=='en'" xlink:href="#icon-yingyu1"></use>
+                      <use v-if="item.lang=='tr'" xlink:href="#icon-turkey"></use>
                     </svg>
                   </mu-avatar>
                 </mu-list-item-action>
@@ -94,6 +96,11 @@ export default {
           src: require('@/assets/han.png'),
           text: this.$t('lang.kr'),
           lang: 'kr'
+        },
+        {
+          src: require('@/assets/han.png'),
+          text: this.$t('lang.tr'),
+          lang: 'tr'
         },
         // {
         //   src: require('@/assets/zh.png'),

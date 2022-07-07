@@ -574,6 +574,7 @@ export default {
 		"hideSm": "隐藏小额资产",
 		"assets": "我的资产",
 		"taccount": "合约账户",
+		"question":"客服",
 		"letransaction": "秒合约账户",
 		"laccount": "法币账户",
 		"totalassets": "总资产折合",

@@ -12,34 +12,77 @@
       <!--      </mu-tabs>-->
       <div class="flex">
         <div class="flex1"></div>
-        <div @click="active=index" class="tabbt" :class="active===index?'active':''" v-for="(name,index) in Object.keys(wallets)">
+        <div v-bind:class="{'active':link == 'a'}" v-on:click.prevent="link='a'"  class="tabbt" v-for="(name,index) in Object.keys(wallets)">
           BTC
         </div>
-        <div @click="active=index" class="tabbt" :class="active===index?'active':''" v-for="(name,index) in Object.keys(wallets)">
+        <div v-bind:class="{'active':link == 'b'}" v-on:click.prevent="link='b'"  class="tabbt" v-for="(name,index) in Object.keys(wallets)">
           ETH
         </div>
-        <div @click="active=index" class="tabbt" :class="active===index?'active':''" v-for="(name,index) in Object.keys(wallets)">
+        <div v-bind:class="{'active':link == 'c'}" v-on:click.prevent="link='c'" class="tabbt" v-for="(name,index) in Object.keys(wallets)">
           LTC
         </div>
-        <div @click="active=index" class="tabbt" :class="active===index?'active':''" v-for="(name,index) in Object.keys(wallets)">
+        <div v-bind:class="{'active':link == 'd'}" v-on:click.prevent="link='d'" class="tabbt" v-for="(name,index) in Object.keys(wallets)">
           USDT
         </div>
         
         <div class="flex1"></div>
       </div>
       <div style="overflow: auto; height: calc(100% - 56px - 48px);">
+      <div v-if="link == 'a'">
         <div>
           <div id="qrcode" ref="qrcode">
-            <img :src="'https://test14.dfb.io/show/lookqr.php?url='+wallets[Object.keys(wallets)[active]]">
+             <!-- <img :src="'https://test14.dfb.io/show/lookqr.php?url='+wallets[Object.keys(wallets)[0]]"> -->
+             <img :src="'https://test14.dfb.io/show/lookqr.php?url='+differentQRcode[0].imgNumber">
           </div>
         </div>
         <p>
           <span style="display: block; color:#2296f3" v-if="Object.keys(wallets)[active]==='usdt'">ERC20</span>
-          {{ wallets[Object.keys(wallets)[active]] }}
-        </p>
-        <mu-button class="copy" flat color="primary" :data-clipboard-text="wallets[Object.keys(wallets)[active]]"
-                  >{{ $t('account.gain') }}
-        </mu-button>
+           <!-- {{ wallets[Object.keys(wallets)[0]] }}-->
+           {{differentQRcode[0].qrcodeNumber}}
+        </p> 
+      </div>
+
+      <div v-if="link == 'b'">
+        <div>
+          <div id="qrcode" ref="qrcode">
+             <!-- <img :src="'https://test14.dfb.io/show/lookqr.php?url='+wallets[Object.keys(wallets)[0]]"> -->
+             <img :src="'https://test14.dfb.io/show/lookqr.php?url='+differentQRcode[1].imgNumber">
+          </div>
+        </div>
+        <p>
+          <span style="display: block; color:#2296f3" v-if="Object.keys(wallets)[active]==='usdt'">ERC20</span>
+           <!-- {{ wallets[Object.keys(wallets)[0]] }}-->
+           {{differentQRcode[1].qrcodeNumber}}
+        </p> 
+      </div>
+
+      <div v-if="link == 'c'">
+        <div>
+          <div id="qrcode" ref="qrcode">
+             <!-- <img :src="'https://test14.dfb.io/show/lookqr.php?url='+wallets[Object.keys(wallets)[0]]"> -->
+             <img :src="'https://test14.dfb.io/show/lookqr.php?url='+differentQRcode[2].imgNumber">
+          </div>
+        </div>
+        <p>
+          <span style="display: block; color:#2296f3" v-if="Object.keys(wallets)[active]==='usdt'">ERC20</span>
+           <!-- {{ wallets[Object.keys(wallets)[0]] }}-->
+           {{differentQRcode[2].qrcodeNumber}}
+        </p> 
+      </div>
+
+      <div v-if="link == 'd'">
+        <div>
+          <div id="qrcode" ref="qrcode">
+             <!-- <img :src="'https://test14.dfb.io/show/lookqr.php?url='+wallets[Object.keys(wallets)[0]]"> -->
+             <img :src="'https://test14.dfb.io/show/lookqr.php?url='+differentQRcode[3].imgNumber">
+          </div>
+        </div>
+        <p>
+          <span style="display: block; color:#2296f3" v-if="Object.keys(wallets)[active]==='usdt'">ERC20</span>
+           <!-- {{ wallets[Object.keys(wallets)[0]] }}-->
+           {{differentQRcode[3].qrcodeNumber}}
+        </p> 
+      </div>    
         <mu-button class="copy" flat color="primary" :data-clipboard-text="wallets[Object.keys(wallets)[active]]"
                    @click="copy">{{ $t('account.copy') }}
         </mu-button>
@@ -99,7 +142,26 @@ export default {
       select: '',
       selected: '',
       loading: false,
-      fullLoading: false
+      fullLoading: false,
+      link: 'a',
+      differentQRcode:[
+        {
+          imgNumber:123456,
+          qrcodeNumber:"TXowbGCuudzTBLy7LkZsMJxX9K3a5Gtkb8"
+        },
+       {
+          imgNumber:456789,
+          qrcodeNumber:"JKlwbGCuudzTBLy7LkZsMJxX9K3a5ghljn9",
+        },
+       {
+          imgNumber:123789,
+          qrcodeNumber:"GHdwbGCuudzTBLy7LkZsMJxX9K3a5ldfghg3",
+        },
+        {
+          imgNumber:147369,
+          qrcodeNumber:"OBlwbGCuudzTBLy7LkZsMJxX9K3a5fgkkio5",
+        },
+      ]
     }
   },
   watch: {
@@ -109,7 +171,7 @@ export default {
     }
   },
   mounted() {
-    this.getWallets()
+    this.getWallets(0)
     this.select = this.$t('account.select')
     this.selected = this.$t('account.selected')
   },
@@ -146,7 +208,9 @@ export default {
         }
       });
     },
-    getWallets() {
+    
+
+    getWallets(i) {
       const loading = this.$loading();
 
       let that = this;
@@ -163,9 +227,12 @@ export default {
 
         loading.close();
         if (res.data.type === 'ok') {
+          console.log(res);
           that.wallets = res.data.message;
 
           let url = that.wallets[Object.keys(that.wallets)[0]];
+          console.log(url);
+          console.log(i);
           // that.qrcode(url)
 
         }

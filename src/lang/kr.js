@@ -646,6 +646,7 @@ export default{
 		"hideSm": "소액 자산 숨기기",
 		"assets": "자산",
 		"taccount": "거래 계좌",
+		"question":"고객 서비스",
 		"laccount": "프랜차이즈 계좌",
 		"letransaction": "초 계약 계좌",
 		"totalassets": "총자산 할인",

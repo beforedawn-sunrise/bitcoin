@@ -560,6 +560,7 @@ export default {
         "assets": "資產",
         "taccount": "交易帳戶",
         "laccount": "法幣帳戶",
+        "question":"客服",
         "letransaction": "秒合約帳戶",
         "totalassets": "總資產折合",
         "upaddress": "提幣地址管理",
